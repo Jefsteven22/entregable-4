@@ -6,8 +6,18 @@
     "contact": "jefsteven22@gmail.com",
     "version": "1.0"
   },
+  "servers": [
+    {
+      "url": "http://localhost:8000/api/v1/users",
+      "variables": {}
+    },
+    {
+      "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
+      "variables": {}
+    }
+  ],
   "paths": {
-    "/{id}": {
+    "/api/v1/{id}": {
       "put": {
         "tags": ["Users"],
         "summary": "User upload",
@@ -51,9 +61,14 @@
           }
         },
         "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
         "servers": [
           {
-            "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1/users",
+            "url": "http://localhost:8000/api/v1/users",
             "variables": {}
           }
         ]
@@ -230,6 +245,11 @@
           }
         },
         "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
         "servers": [
           {
             "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
@@ -278,6 +298,11 @@
           }
         },
         "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
         "servers": [
           {
             "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
@@ -312,6 +337,11 @@
           }
         },
         "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
         "servers": [
           {
             "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
