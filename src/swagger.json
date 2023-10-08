@@ -1,0 +1,384 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Chat API",
+    "description": "A little whatsapp api clone",
+    "contact": "jefsteven22@gmail.com",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/v1/users/{id}": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "test upload",
+        "operationId": "testupload",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {},
+              "schema": {
+                "required": ["avatar"],
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Register",
+        "operationId": "Register",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/RegisterRequest"
+                  },
+                  {
+                    "example": {
+                      "firstname": "dennise",
+                      "lastname": "Contreras",
+                      "email": "dennise@gmail.com",
+                      "password": "Jeffrey24214736."
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "firstname": "dennise",
+                "lastname": "Contreras",
+                "email": "dennise@gmail.com",
+                "password": "Jeffrey24214736."
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get All Users",
+        "operationId": "GetAllUsers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/users/login": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Login User",
+        "operationId": "LoginUser",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZmlyc3RuYW1lIjoiU3RldmVuIiwibGFzdG5hbWUiOiJDb250cmVyYXMiLCJlbWFpbCI6InN0ZXZlbjJAbWFpbC5jb20iLCJhdmF0YXIiOiJodHRwczovL2Nkbi5waXhhYmF5LmNvbS9waG90by8yMDE1LzEwLzA1LzIyLzM3L2JsYW5rLXByb2ZpbGUtcGljdHVyZS05NzM0NjBfMTI4MC5wbmciLCJkZXNjcmlwdGlvbiI6bnVsbCwidmFsaWRFbWFpbCI6ZmFsc2UsImNyZWF0ZWRBdCI6IjIwMjMtMDktMTVUMDI6NDc6MDYuMDQzWiIsInVwZGF0ZWRBdCI6IjIwMjMtMDktMTVUMDI6NDc6MDYuMDQzWiIsImlhdCI6MTY5NDgzMTQ2NCwiZXhwIjoxNjk0ODM1MDY0fQ.SoNMl-9zB0Rvdl9k7ie2FKYeTCuAOhfalKoWzHN4-FBHwVW-F-KvQIaXmO3iqPFsfBQ5i3QZv4NpGPSFW0edAg"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginUserRequest"
+                  },
+                  {
+                    "example": {
+                      "email": "dennise@gmail.com",
+                      "password": "Jeffrey24214736."
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "dennise@gmail.com",
+                "password": "Jeffrey24214736."
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/api/v1/conversations": {
+      "post": {
+        "tags": ["conversations"],
+        "summary": "Create Conversations",
+        "operationId": "CreateConversations",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateConversationsRequest"
+                  },
+                  {
+                    "example": {
+                      "userId": 1,
+                      "participantId": 2
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "userId": 1,
+                "participantId": 2
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/conversations/group": {
+      "post": {
+        "tags": ["conversations"],
+        "summary": "Create Group Conversation",
+        "operationId": "CreateGroupConversation",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateGroupConversationRequest"
+                  },
+                  {
+                    "example": {
+                      "userId": 1,
+                      "participantsIds": [2, 3, 5],
+                      "title": "Titulo de prueba"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "userId": 1,
+                "participantsIds": [2, 3, 5],
+                "title": "Titulo de prueba"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/conversations/{id}": {
+      "get": {
+        "tags": ["conversations"],
+        "summary": "Get all Conversations By ID",
+        "operationId": "GetallConversationsByID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RegisterRequest": {
+        "title": "RegisterRequest",
+        "required": ["firstname", "lastname", "email", "password"],
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "firstname": "dennise",
+          "lastname": "Contreras",
+          "email": "dennise@gmail.com",
+          "password": "Jeffrey24214736."
+        }
+      },
+      "LoginUserRequest": {
+        "title": "LoginUserRequest",
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "dennise@gmail.com",
+          "password": "Jeffrey24214736."
+        }
+      },
+      "CreateConversationsRequest": {
+        "title": "CreateConversationsRequest",
+        "required": ["userId", "participantId"],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "participantId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "userId": 1,
+          "participantId": 2
+        }
+      },
+      "CreateGroupConversationRequest": {
+        "title": "CreateGroupConversationRequest",
+        "required": ["userId", "participantsIds", "title"],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "participantsIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": ""
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "userId": 1,
+          "participantsIds": [2, 3, 5],
+          "title": "Titulo de prueba"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "Users"
+    },
+    {
+      "name": "conversations"
+    }
+  ]
+}
