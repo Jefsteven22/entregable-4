@@ -7,11 +7,11 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/v1/users/{id}": {
+    "/{id}": {
       "put": {
         "tags": ["Users"],
-        "summary": "test upload",
-        "operationId": "testupload",
+        "summary": "User upload",
+        "operationId": "Userupload",
         "parameters": [
           {
             "name": "id",
@@ -50,7 +50,13 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1/users",
+            "variables": {}
+          }
+        ]
       }
     },
     "/api/v1/users": {
@@ -70,19 +76,19 @@
                   },
                   {
                     "example": {
-                      "firstname": "dennise",
-                      "lastname": "Contreras",
-                      "email": "dennise@gmail.com",
-                      "password": "Jeffrey24214736."
+                      "firstname": "Username",
+                      "lastname": "UserLastName",
+                      "email": "user@mail.com",
+                      "password": "User123456@"
                     }
                   }
                 ]
               },
               "example": {
-                "firstname": "dennise",
-                "lastname": "Contreras",
-                "email": "dennise@gmail.com",
-                "password": "Jeffrey24214736."
+                "firstname": "Username",
+                "lastname": "UserLastName",
+                "email": "user@mail.com",
+                "password": "User123456@"
               }
             }
           },
@@ -94,7 +100,13 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
+            "variables": {}
+          }
+        ]
       },
       "get": {
         "tags": ["Users"],
@@ -107,7 +119,18 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
+            "variables": {}
+          }
+        ]
       }
     },
     "/api/v1/users/login": {
@@ -139,15 +162,15 @@
                   },
                   {
                     "example": {
-                      "email": "dennise@gmail.com",
-                      "password": "Jeffrey24214736."
+                      "email": "user@mail.com",
+                      "password": "User123456@"
                     }
                   }
                 ]
               },
               "example": {
-                "email": "dennise@gmail.com",
-                "password": "Jeffrey24214736."
+                "email": "user@mail.com",
+                "password": "User123456@"
               }
             }
           },
@@ -160,7 +183,13 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [],
+        "servers": [
+          {
+            "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
+            "variables": {}
+          }
+        ]
       }
     },
     "/api/v1/conversations": {
@@ -200,7 +229,13 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
+            "variables": {}
+          }
+        ]
       }
     },
     "/api/v1/conversations/group": {
@@ -242,7 +277,13 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
+            "variables": {}
+          }
+        ]
       }
     },
     "/api/v1/conversations/{id}": {
@@ -270,7 +311,13 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://melbourne-wombat-asxm.1.ie-1.fl0.io/api/v1",
+            "variables": {}
+          }
+        ]
       }
     }
   },
@@ -295,10 +342,10 @@
           }
         },
         "example": {
-          "firstname": "dennise",
-          "lastname": "Contreras",
-          "email": "dennise@gmail.com",
-          "password": "Jeffrey24214736."
+          "firstname": "Username",
+          "lastname": "UserLastName",
+          "email": "user@mail.com",
+          "password": "User123456@"
         }
       },
       "LoginUserRequest": {
@@ -314,8 +361,8 @@
           }
         },
         "example": {
-          "email": "dennise@gmail.com",
-          "password": "Jeffrey24214736."
+          "email": "user@mail.com",
+          "password": "User123456@"
         }
       },
       "CreateConversationsRequest": {
